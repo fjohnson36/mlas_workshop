@@ -1,0 +1,16 @@
+# configuration file for install time prediction
+path:
+    # data collected and created by CDO, Nutan Ranoliya (nr0778)
+    train_data: data/ss-2019-iefs-install-train.csv.gz 
+    test_data: data/ss-2019-iefs-install-test.csv.gz
+    test_labels: data/ss-2019-iefs-install-test_labels.csv
+    test_predictions: data/ss-2019-iefs-install-test_predictions.csv
+
+partition:
+    test: 0.2   # train=80%, test=20%
+    validation: 0.2   # train_all=80%, train_validation=20%
+
+training:   
+    scoring: [neg_mean_squared_error, r2]   # many scoring metrics, FIRST is the "best" scoring
+    threads: 2
+    model: gbm # rf or gbm in baseline code
